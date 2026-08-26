@@ -6,23 +6,6 @@
 // KİTAPLAR
 // ========================================
 
-const SUPABASE_URL = "https://boxevnkaaxdeyycaulug.supabase.co/rest/v1/";
-const SUPABASE_KEY = "sb_publishable_GXN-M7XlyPoNegkt9-jORA_mW2wHcgX";
-
-const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
-
-async function signInWithGoogle() {
-    const { error } = await supabaseClient.auth.signInWithOAuth({
-        provider: "google"
-    });
-
-    if (error) {
-        alert(error.message);
-    }
-    
 const books = [
 
     {
