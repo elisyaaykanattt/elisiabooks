@@ -307,7 +307,7 @@ const announcements = [
         title: "ElisiaBooks açıldı! 🎉",
 
         text:
-            "Hikâyelerimin dünyasına hoş geldiniz. Okyanus Dalgaları'nın bölümleri yakında burada olacak."
+            "Hikâyelerimin dünyasına hoş geldiniz. Okyanus Dalgaları'nın bölümleri şimdi yayında."
     }
 
 ];
