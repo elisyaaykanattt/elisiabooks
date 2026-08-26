@@ -2,16 +2,12 @@
 // ELISIABOOKS
 // ========================================
 
-
 // ========================================
 // KİTAPLAR
 // ========================================
 
 const books = [
 
-
-
-    
     {
         title: "Okyanus Dalgaları",
 
@@ -25,41 +21,29 @@ const books = [
         status: "YAYINDA",
 
         chapters: [
-
             {
                 number: "Giriş",
                 title: "GİRİŞ"
             },
-
             {
                 number: "1",
                 title: "OTOPARK"
             },
-
             {
                 number: "2",
                 title: "TANIŞMA"
             },
-
             {
                 number: "3",
                 title: "MAVİ"
             },
-
             {
                 number: "4",
                 title: "BİLMEMEN DAHA İYİ",
                 unfinished: true
             }
-
         ]
-
     },
-
-
-    // ====================================
-    // YAKINDA GELECEK KİTAPLAR
-    // ====================================
 
     {
         title: "",
@@ -72,11 +56,9 @@ const books = [
         cover: "",
 
         status: "YAKINDA"
-
     }
 
 ];
-
 
 
 // ========================================
@@ -85,23 +67,17 @@ const books = [
 
 function displayBooks(bookArray = books) {
 
-    const bookList =
-        document.getElementById("bookList");
+    const bookList = document.getElementById("bookList");
+
+    if (!bookList) return;
 
     bookList.innerHTML = "";
 
-
     bookArray.forEach((book, index) => {
 
-        const card =
-            document.createElement("div");
+        const card = document.createElement("div");
 
         card.className = "book-card";
-
-
-        // --------------------------------
-        // KAPAK
-        // --------------------------------
 
         let coverHTML = "";
 
@@ -119,21 +95,15 @@ function displayBooks(bookArray = books) {
 
             coverHTML = `
                 <div class="book-cover">
-
-                    ${book.status === "YAKINDA"
-                        ? "COMING SOON"
-                        : "📖"
+                    ${
+                        book.status === "YAKINDA"
+                            ? "COMING SOON"
+                            : "📖"
                     }
-
                 </div>
             `;
 
         }
-
-
-        // --------------------------------
-        // YAKINDA KİTABI
-        // --------------------------------
 
         if (book.status === "YAKINDA") {
 
@@ -159,14 +129,7 @@ function displayBooks(bookArray = books) {
 
             `;
 
-        }
-
-
-        // --------------------------------
-        // NORMAL KİTAP
-        // --------------------------------
-
-        else {
+        } else {
 
             card.innerHTML = `
 
@@ -204,13 +167,11 @@ function displayBooks(bookArray = books) {
 
         }
 
-
         bookList.appendChild(card);
 
     });
 
 }
-
 
 
 // ========================================
@@ -221,12 +182,14 @@ function openBook(index) {
 
     const book = books[index];
 
-    if (book.status === "YAYINDA") {
-        window.location.href = "book.html";
-    }
+    alert(
+        book.title +
+        "\n\n" +
+        "Bölüm sayısı: " +
+        book.chapters.length
+    );
 
 }
-
 
 
 // ========================================
@@ -237,6 +200,8 @@ function openSearch() {
 
     const searchBox =
         document.getElementById("searchBox");
+
+    if (!searchBox) return;
 
     searchBox.classList.add("active");
 
@@ -252,6 +217,8 @@ function closeSearch() {
     const searchBox =
         document.getElementById("searchBox");
 
+    if (!searchBox) return;
+
     searchBox.classList.remove("active");
 
     document
@@ -265,27 +232,24 @@ function closeSearch() {
 
 function searchBooks() {
 
-    const text =
-        document
-            .getElementById("searchInput")
-            .value
-            .toLowerCase();
+    const input =
+        document.getElementById("searchInput");
 
+    if (!input) return;
+
+    const text =
+        input.value.toLowerCase();
 
     const filteredBooks =
         books.filter(book =>
-
             book.title
                 .toLowerCase()
                 .includes(text)
-
         );
-
 
     displayBooks(filteredBooks);
 
 }
-
 
 
 // ========================================
@@ -299,7 +263,6 @@ function toggleDarkMode() {
 }
 
 
-
 // ========================================
 // DUYURULAR
 // ========================================
@@ -310,7 +273,7 @@ const announcements = [
         title: "ElisiaBooks açıldı! 🎉",
 
         text:
-            "Hikâyelerimin dünyasına hoş geldiniz. Okyanus Dalgaları'nın bölümleri şimdi yayında."
+            "Hikâyelerimin dünyasına hoş geldiniz. Okyanus Dalgaları'nın bölümleri yakında burada olacak."
     }
 
 ];
@@ -319,12 +282,11 @@ const announcements = [
 function displayAnnouncements() {
 
     const container =
-        document.getElementById(
-            "announcementList"
-        );
+        document.getElementById("announcementList");
+
+    if (!container) return;
 
     container.innerHTML = "";
-
 
     announcements.forEach(item => {
 
@@ -333,7 +295,6 @@ function displayAnnouncements() {
 
         announcement.className =
             "announcement";
-
 
         announcement.innerHTML = `
 
@@ -347,15 +308,11 @@ function displayAnnouncements() {
 
         `;
 
-
-        container.appendChild(
-            announcement
-        );
+        container.appendChild(announcement);
 
     });
 
 }
-
 
 
 // ========================================
