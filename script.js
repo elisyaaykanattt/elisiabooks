@@ -10,33 +10,7 @@
 const books = [
 
 
-let supabaseClient = null;
 
-if (window.supabase) {
-    supabaseClient = window.supabase.createClient(
-        SUPABASE_URL,
-        SUPABASE_KEY
-    );
-}
-
-async function signInWithGoogle() {
-
-    if (!supabaseClient) {
-        alert("Supabase bağlantısı kurulamadı.");
-        return;
-    }
-
-    const { error } = await supabaseClient.auth.signInWithOAuth({
-        provider: "google",
-        options: {
-            redirectTo: window.location.origin
-        }
-    });
-
-    if (error) {
-        alert("Google ile giriş yapılamadı: " + error.message);
-    }
-}
     
     {
         title: "Okyanus Dalgaları",
