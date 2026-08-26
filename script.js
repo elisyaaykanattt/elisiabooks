@@ -15,6 +15,19 @@ const supabaseClient = window.supabase.createClient(
     SUPABASE_URL,
     SUPABASE_KEY
 );
+
+async function signInWithGoogle() {
+    const { error } = await supabaseClient.auth.signInWithOAuth({
+        provider: "google",
+        options: {
+            redirectTo: window.location.origin
+        }
+    });
+
+    if (error) {
+        alert("Google ile giriş yapılamadı: " + error.message);
+    }
+}
     
     {
         title: "Okyanus Dalgaları",
