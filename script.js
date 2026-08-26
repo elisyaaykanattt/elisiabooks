@@ -407,3 +407,5 @@ document.addEventListener(
 
     }
 );
+
+alert("SCRIPT CALISIYOR");
