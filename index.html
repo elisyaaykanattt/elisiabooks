@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="tr">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>ElisiaBooks</title>
+
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+
+<body>
+
+
+<!-- ================= HEADER ================= -->
+
+<header>
+
+    <a href="#" class="logo">
+        elisiabooks
+    </a>
+
+
+    <nav>
+
+        <a href="#books">
+            Kitaplarım
+        </a>
+
+        <a href="#about">
+            Hakkımda
+        </a>
+
+        <a href="#announcements">
+            Duyurular
+        </a>
+
+    </nav>
+
+
+    <div class="header-buttons">
+
+        <button onclick="openSearch()">
+            🔍
+        </button>
+
+        <button onclick="toggleDarkMode()">
+            🌙
+        </button>
+
+    </div>
+
+</header>
+
+
+
+<!-- ================= ARAMA ================= -->
+
+<div id="searchBox" class="search-box">
+
+    <input
+        type="text"
+        id="searchInput"
+        placeholder="Kitap ara..."
+        onkeyup="searchBooks()"
+    >
+
+    <button onclick="closeSearch()">
+        ✕
+    </button>
+
+</div>
+
+
+
+<!-- ================= ANA SAYFA ================= -->
+
+<main>
+
+
+<!-- ================= HOŞ GELDİN ================= -->
+
+<section class="hero">
+
+
+    <!--
+
+        GÖRSEL ALANI
+
+        Daha sonra buraya kendi görselini
+        koyacağız.
+
+    -->
+
+    <div class="hero-image">
+
+        <!--
+
+        <img
+            src="images/hero.jpg"
+            alt="ElisiaBooks">
+
+        -->
+
+    </div>
+
+
+
+    <div class="hero-content">
+
+        <p class="eyebrow">
+            ELISIABOOKS
+        </p>
+
+
+        <h1>
+            Hikâyelerimin
+            dünyasına hoş geldin.
+        </h1>
+
+
+        <p>
+
+            Yazdığım kitapları,
+            bölümleri ve hikâyelerimin
+            dünyasını burada keşfedebilirsin.
+
+        </p>
+
+
+        <a
+            href="#books"
+            class="main-button">
+
+            Kitaplarımı keşfet →
+
+        </a>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ================= KİTAPLAR ================= -->
+
+<section
+    id="books"
+    class="section">
+
+
+    <p class="eyebrow">
+        HİKÂYELER
+    </p>
+
+
+    <h2>
+        Kitaplarım
+    </h2>
+
+
+    <div
+        id="bookList"
+        class="book-list">
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ================= HAKKIMDA ================= -->
+
+<section
+    id="about"
+    class="about">
+
+
+    <!-- GÖRSEL -->
+
+    <div class="about-image">
+
+        <!--
+
+        <img
+            src="images/about.jpg"
+            alt="Elisia">
+
+        -->
+
+    </div>
+
+
+
+    <!-- YAZI -->
+
+    <div class="about-content">
+
+        <p class="eyebrow">
+            YAZAR
+        </p>
+
+
+        <h2>
+            Elisia
+        </h2>
+
+
+        <p>
+
+            Merhaba! Ben Elisia.
+
+            Buraya kendin hakkında
+            istediğin yazıyı ekleyebilirsin.
+
+        </p>
+
+
+        <p>
+
+            Yazmaya nasıl başladığını,
+            kitaplarını veya okuyucularına
+            söylemek istediğin şeyleri
+            burada anlatabilirsin.
+
+        </p>
+
+    </div>
+
+
+</section>
+
+
+
+<!-- ================= DUYURULAR ================= -->
+
+<section
+    id="announcements"
+    class="section">
+
+
+    <p class="eyebrow">
+        GÜNCEL
+    </p>
+
+
+    <h2>
+        Duyurular
+    </h2>
+
+
+    <div
+        id="announcementList">
+
+    </div>
+
+
+</section>
+
+
+</main>
+
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-logo">
+        elisiabooks
+    </div>
+
+
+    <p>
+        Elisia'nın hikâyeleri.
+    </p>
+
+
+    <p>
+        © 2026 ElisiaBooks
+    </p>
+
+</footer>
+
+
+
+<script src="script.js"></script>
+
+</body>
+
+</html>
