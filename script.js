@@ -8,8 +8,7 @@
 // ========================================
 
 const books = [
-const SUPABASE_URL = "https://boxevnkaaxdeyycaulug.supabase.co/rest/v1/";
-const SUPABASE_KEY = "sb_publishable_GXN-M7XlyPoNegkt9-jORA_mW2wHcgX";
+
 
 let supabaseClient = null;
 
