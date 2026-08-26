@@ -11,12 +11,22 @@ const books = [
 const SUPABASE_URL = "https://boxevnkaaxdeyycaulug.supabase.co/rest/v1/";
 const SUPABASE_KEY = "sb_publishable_GXN-M7XlyPoNegkt9-jORA_mW2wHcgX";
 
-const supabaseClient = window.supabase.createClient(
-    SUPABASE_URL,
-    SUPABASE_KEY
-);
+let supabaseClient = null;
+
+if (window.supabase) {
+    supabaseClient = window.supabase.createClient(
+        SUPABASE_URL,
+        SUPABASE_KEY
+    );
+}
 
 async function signInWithGoogle() {
+
+    if (!supabaseClient) {
+        alert("Supabase bağlantısı kurulamadı.");
+        return;
+    }
+
     const { error } = await supabaseClient.auth.signInWithOAuth({
         provider: "google",
         options: {
