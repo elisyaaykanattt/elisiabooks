@@ -22,45 +22,58 @@ const books = [
         status: "YAYINDA",
 
         chapters: [
+
             {
                 number: "Giriş",
                 title: "GİRİŞ"
             },
+
             {
                 number: "1",
                 title: "OTOPARK"
             },
+
             {
                 number: "2",
                 title: "TANIŞMA"
             },
+
             {
                 number: "3",
                 title: "MAVİ"
             },
+
             {
                 number: "4",
                 title: "BİLMEMEN DAHA İYİ",
                 unfinished: true
             }
+
         ]
+
     },
+
+
+    // ====================================
+    // YAKINDA GELECEK KİTAPLAR
+    // ====================================
 
     {
         title: "",
 
         genre: "",
 
-        description: "Yeni bir hikâye geliyor...",
+        description:
+            "Yeni bir hikâye geliyor...",
 
         cover: "",
 
-        status: "YAKINDA",
+        status: "YAKINDA"
 
-        chapters: []
     }
 
 ];
+
 
 
 // ========================================
@@ -69,27 +82,27 @@ const books = [
 
 function displayBooks(bookArray = books) {
 
-    const bookList = document.getElementById("bookList");
-
-    if (!bookList) {
-        console.error("bookList bulunamadı.");
-        return;
-    }
+    const bookList =
+        document.getElementById("bookList");
 
     bookList.innerHTML = "";
 
+
     bookArray.forEach((book, index) => {
 
-        const card = document.createElement("div");
+        const card =
+            document.createElement("div");
 
         card.className = "book-card";
 
 
+        // --------------------------------
         // KAPAK
+        // --------------------------------
 
-        let coverHTML;
+        let coverHTML = "";
 
-        if (book.cover && book.cover.trim() !== "") {
+        if (book.cover !== "") {
 
             coverHTML = `
                 <img
@@ -103,18 +116,21 @@ function displayBooks(bookArray = books) {
 
             coverHTML = `
                 <div class="book-cover">
-                    ${
-                        book.status === "YAKINDA"
-                            ? "COMING SOON"
-                            : "📖"
+
+                    ${book.status === "YAKINDA"
+                        ? "COMING SOON"
+                        : "📖"
                     }
+
                 </div>
             `;
 
         }
 
 
-        // YAKINDA OLAN KİTAP
+        // --------------------------------
+        // YAKINDA KİTABI
+        // --------------------------------
 
         if (book.status === "YAKINDA") {
 
@@ -143,7 +159,9 @@ function displayBooks(bookArray = books) {
         }
 
 
-        // YAYINDA OLAN KİTAP
+        // --------------------------------
+        // NORMAL KİTAP
+        // --------------------------------
 
         else {
 
@@ -170,7 +188,6 @@ function displayBooks(bookArray = books) {
                     </p>
 
                     <button
-                        type="button"
                         class="book-button"
                         onclick="openBook(${index})">
 
@@ -192,6 +209,7 @@ function displayBooks(bookArray = books) {
 }
 
 
+
 // ========================================
 // KİTAP AÇ
 // ========================================
@@ -200,25 +218,16 @@ function openBook(index) {
 
     const book = books[index];
 
-    if (!book) {
-        return;
+    if (book.status === "YAYINDA") {
+        window.location.href = "book.html";
     }
-
-    const chapterCount =
-        book.chapters ? book.chapters.length : 0;
-
-    alert(
-        book.title +
-        "\n\n" +
-        "Bölüm sayısı: " +
-        chapterCount
-    );
 
 }
 
 
+
 // ========================================
-// ARAMA PENCERESİNİ AÇ
+// ARAMA
 // ========================================
 
 function openSearch() {
@@ -226,103 +235,54 @@ function openSearch() {
     const searchBox =
         document.getElementById("searchBox");
 
-    const searchInput =
-        document.getElementById("searchInput");
-
-    if (!searchBox) {
-        return;
-    }
-
     searchBox.classList.add("active");
 
-    if (searchInput) {
-        searchInput.focus();
-    }
+    document
+        .getElementById("searchInput")
+        .focus();
 
 }
 
-
-// ========================================
-// ARAMA PENCERESİNİ KAPAT
-// ========================================
 
 function closeSearch() {
 
     const searchBox =
         document.getElementById("searchBox");
 
-    const searchInput =
-        document.getElementById("searchInput");
+    searchBox.classList.remove("active");
 
-    if (searchBox) {
-        searchBox.classList.remove("active");
-    }
-
-    if (searchInput) {
-        searchInput.value = "";
-    }
+    document
+        .getElementById("searchInput")
+        .value = "";
 
     displayBooks();
 
 }
 
 
-// ========================================
-// KİTAP ARA
-// ========================================
-
 function searchBooks() {
 
-    const input =
-        document.getElementById("searchInput");
-
-    if (!input) {
-        return;
-    }
-
     const text =
-        input.value.trim().toLowerCase();
-
-
-    if (text === "") {
-
-        displayBooks();
-
-        return;
-
-    }
+        document
+            .getElementById("searchInput")
+            .value
+            .toLowerCase();
 
 
     const filteredBooks =
-        books.filter(book => {
+        books.filter(book =>
 
-            const title =
-                book.title
-                    ? book.title.toLowerCase()
-                    : "";
+            book.title
+                .toLowerCase()
+                .includes(text)
 
-            const genre =
-                book.genre
-                    ? book.genre.toLowerCase()
-                    : "";
-
-            const description =
-                book.description
-                    ? book.description.toLowerCase()
-                    : "";
-
-            return (
-                title.includes(text) ||
-                genre.includes(text) ||
-                description.includes(text)
-            );
-
-        });
+        );
 
 
     displayBooks(filteredBooks);
 
 }
+
 
 
 // ========================================
@@ -336,6 +296,7 @@ function toggleDarkMode() {
 }
 
 
+
 // ========================================
 // DUYURULAR
 // ========================================
@@ -346,7 +307,7 @@ const announcements = [
         title: "ElisiaBooks açıldı! 🎉",
 
         text:
-            "Hikâyelerimin dünyasına hoş geldiniz. Okyanus Dalgaları'nın bölümleri yakında burada olacak."
+            "Hikâyelerimin dünyasına hoş geldiniz. Okyanus Dalgaları'nın bölümleri şimdi yayında."
     }
 
 ];
@@ -355,11 +316,9 @@ const announcements = [
 function displayAnnouncements() {
 
     const container =
-        document.getElementById("announcementList");
-
-    if (!container) {
-        return;
-    }
+        document.getElementById(
+            "announcementList"
+        );
 
     container.innerHTML = "";
 
@@ -386,26 +345,20 @@ function displayAnnouncements() {
         `;
 
 
-        container.appendChild(announcement);
+        container.appendChild(
+            announcement
+        );
 
     });
 
 }
 
 
+
 // ========================================
-// SAYFA TAMAMEN YÜKLENDİĞİNDE ÇALIŞTIR
+// SAYFA AÇILDIĞINDA
 // ========================================
 
-document.addEventListener(
-    "DOMContentLoaded",
-    function () {
+displayBooks();
 
-        displayBooks();
-
-        displayAnnouncements();
-
-    }
-);
-
-alert("SCRIPT CALISIYOR");
+displayAnnouncements();
